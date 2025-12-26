@@ -1,0 +1,121 @@
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 1.5rem;
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+}
+.slider {
+    width: 3rem;
+    height: 1rem;
+    position: absolute;
+    cursor: pointer;
+    background-color: var(--track-unchecked, #e2e2ea);
+    border-radius: .5rem;
+    transform: translateY(-50%);
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+}
+.slider.checked {
+    background-color: var(--track-checked, #b3b3ea);
+}
+.slider.disabled {
+    background-color: var(--color-unchecked-disabled, #f5f5f5);
+    cursor: not-allowed;
+}
+.slider.focused {
+    outline: var(--border-width-lg, 0.125rem) solid var(--outline-color-focused, #303061);
+    outline-offset: 0.125rem;
+}
+.key {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    background-color: var(--color-unchecked, #fff);
+    border-color: var(--border-color, #303061);
+    box-sizing: border-box;
+    transform: translateY(-50%);
+    transition: left 0.3s, background 0.3s, border-color 0.3s;
+    z-index: 2;
+    border-width: var(--border-width-md, 0.063rem);
+    border-radius: 100%;
+    border-style: solid;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slider.checked .key {
+    left: 1.5rem;
+    background-color: var(--color-checked, #5858c2);
+    border-color: transparent;
+}
+.slider.disabled .key {
+    background-color: var(--color-unchecked-disabled, #f5f5f5);
+    border-color: var(--color-checked-disabled, #a3a3c2);
+}
+input:checked+.slider .key {
+    left: 1.5rem;
+    background: var(--color-checked);
+    border-color: transparent;
+    :hover {
+        background-color: var(--color-checked-hover);
+        cursor: pointer;
+    }
+}
+input:not(:checked):disabled+.slider .key {
+    background-color: var(--color-unchecked-disabled);
+}
+input:checked:disabled+.slider .key {
+    background-color: var(--color-checked-disabled);
+}
+input:checked+.key {
+    :hover {
+        background-color: var(--color-checked-hover);
+        cursor: pointer;
+    }
+}
+input:checked:disabled+.slider {
+    background-color: var(--color-unchecked-disabled);
+    border-color: var(--color-checked-disabled);
+    cursor: not-allowed;
+}
+input:checked+.slider {
+    background: var(--track-checked);
+}
+input:not(:checked)+.key {
+    background: var(--color-unchecked-hover);
+    border-color: var(--color-checked-hover);
+}
+input:not(:checked):disabled+.key {
+    background-color: var(--color-checked-disabled);
+}
+input:not(:checked):disabled+.slider {
+    background-color: var(--track-unchecked);
+    cursor: not-allowed;
+}
+input:focus+.slider {
+    outline: var(--border-width-lg) solid var(--outline-color-focused);
+    outline-offset: 2px;
+}
+.icon-check {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background: url('data:image/svg+xml;utf8,<svg fill="%23fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.285 6.709a1 1 0 0 0-1.414 0l-8.285 8.285-3.285-3.285a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l9-9a1 1 0 0 0 0-1.414z"/></svg>') no-repeat center/contain;
+}
+.slider:not(.disabled):hover {
+    background-color: var(--color-unchecked-hover, #d1c4e9);
+}
+.slider.checked:not(.disabled):hover {
+    background-color: var(--color-checked-hover, #7c4dff);
+}
+.switch, .slider, .key {
+    font-size: 1em;
+}

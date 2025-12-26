@@ -1,0 +1,80 @@
+<div style="margin: 1.25rem; ">
+    <section style="margin-bottom: 1.25rem;">
+        <h2>Componente Zub Switch</h2>
+        <p>Componente de switch personalizado que pode ser utilizado em formulários ou como um simples controle de alternância.</p>
+    </section>
+
+    <section style="margin-bottom: 1.25rem;">
+        <h2>Exemplo de Uso</h2>
+        <p>Veja as possibilidades do componente Zub Switch:</p>
+        <zub-swtich [(ngModel)]="value" [disabled]="switchDisabled" ></zub-swtich>
+
+        <div style="margin-top: 1.25rem; display: flex; align-items: center;">
+            <label for="native-checkbox">Desabilitar:</label>
+            <input type="checkbox" [(ngModel)]="switchDisabled" id="native-checkbox">
+        </div>
+    </section>
+
+    <section>
+        <h2>Componente Zub Select</h2>
+        <p>Componente de Select personalizado que pode ser utilizado para escolher uma opção.</p>
+        <p>Veja as possibilidades do componente Zub Select:</p>
+    </section>
+
+    <section style="margin-bottom: 1.25rem;">
+        <h2>Exemplo do Zub Select</h2>
+        <zub-select style="width: 6.25rem;"
+          [label]="'Selecione uma opção'"
+          [placeholder]="'Escolha uma opção...'"
+          [options]="selectOptions"
+          [(value)]="selectedValue"
+          [error]="selectError"
+          [disabled]="selectDisabled"
+        ></zub-select>
+        <div style="margin-top: 0.625rem;">
+          <strong>Valor selecionado:</strong> {{ selectedValue }}
+        </div>
+        <p><strong>Opções atuais:</strong> {{ selectOptions | json }}</p>
+    </section>
+
+    <section style="margin-bottom: 1.25rem;">
+        <h2>Demo Interativa do Zub Select</h2>
+        <p>Altere as propriedades abaixo para visualizar o funcionamento e o estilo do componente em tempo real:</p>
+        <form style="display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: flex-end; margin-bottom: 1.25rem;">
+          <div style="display: flex; flex-direction: column; gap: 0.25rem; min-width: 12rem;">
+            <label for="labelInput">Label</label>
+            <input id="labelInput" type="text" [(ngModel)]="selectLabel" name="labelInput" style="padding: 0.5em; font-size: 1em;">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.25rem; min-width: 12rem;">
+            <label for="placeholderInput">Placeholder</label>
+            <input id="placeholderInput" type="text" [(ngModel)]="selectPlaceholder" name="placeholderInput" style="padding: 0.5em; font-size: 1em;">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.25rem; min-width: 12rem;">
+            <label for="disabledInput">Desabilitado</label>
+            <input id="disabledInput" type="checkbox" [(ngModel)]="selectDisabled" name="disabledInput">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.25rem; min-width: 12rem;">
+            <label for="errorInput">Erro</label>
+            <input id="errorInput" type="text" [(ngModel)]="selectError" name="errorInput" style="padding: 0.5em; font-size: 1em;">
+          </div>
+        </form>
+        <form style="margin-bottom: 1.25rem; width: 100%;">
+          <label for="optionsInput">Opções (1 por linha, use : para desabilitar. Ex: Valor:disabled)</label>
+          <br>
+          <textarea id="optionsInput" [(ngModel)]="optionsText" (ngModelChange)="onOptionsTextChange()" name="optionsInput" rows="4" style="width: 100%; min-width: 20rem; max-width: 40rem; padding: 0.5em; font-size: 1em;"></textarea>
+        </form>
+        <zub-select style="width: 12rem;"
+          [label]="selectLabel"
+          [placeholder]="selectPlaceholder"
+          [options]="selectOptionsDemo"
+          [(value)]="selectedValueDemo"
+          [error]="selectError"
+          [disabled]="selectDisabled"
+        ></zub-select>
+        <div style="margin-top: 0.625rem;">
+          <strong>Valor selecionado:</strong> {{ selectedValueDemo }}
+        </div>
+    </section>
+
+</div>
+

@@ -1,0 +1,75 @@
+.zub-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.zub-select-label {
+  font-family: var(--font-family, inherit);
+  font-size: var(--font-size, 1rem);
+  color: var(--text-color-empty, #303061);
+  margin-bottom: 0.25rem;
+}
+
+.zub-select {
+  font-family: var(--font-family, inherit);
+  font-size: var(--font-size, 1rem);
+  color: var(--text-color, #303061);
+  background: var(--background, #fff);
+  border: var(--border-width-md, 0.063rem) solid var(--color, #303061);
+  border-radius: var(--border-radius-md, 0.5rem);
+  padding: var(--padding-vertical, 0.7em) var(--padding-horizontal, 0.5em);
+  min-height: 2.75em;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23303061" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25em 1.25em;
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-hover, #303061);
+    background-color: var(--background-hover, #e2e2ea);
+    color: var(--color-hover, #303061);
+    cursor: pointer;
+  }
+
+  &:focus {
+    border-color: var(--color-focused, #303061);
+    outline: var(--border-width-lg, 0.125rem) solid var(--outline-color-focused, #303061);
+    outline-offset: 0.125rem; 
+    background-color: var(--background, #fff);
+    box-shadow: 0 0 0 0.125rem var(--outline-color-focused, #303061);
+  }
+
+  &:disabled {
+    background: var(--background-disabled, #f5f5f5);
+    color: var(--color-disabled, #a3a3c2);
+    border-color: var(--color-disabled, #a3a3c2);
+    cursor: not-allowed;
+    opacity: 1;
+  }
+
+  &.error,
+  &[aria-invalid='true'] {
+    border-color: var(--color-error, #d32f2f);
+    color: var(--color-error, #d32f2f);
+    background-color: var(--background, #fff);
+  }
+}
+
+.zub-select option[disabled] {
+  color: var(--color-disabled, #a3a3c2);
+  background: var(--background-disabled, #f5f5f5);
+}
+
+.zub-select option[value=''] {
+  color: var(--text-color-empty, #a3a3c2);
+}
+
+.zub-select-error {
+  color: var(--color-error, #d32f2f);
+  font-size: 0.875em;
+  margin-top: 0.1em;
+}

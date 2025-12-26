@@ -1,0 +1,28 @@
+<div class="zub-select-wrapper">
+  @if(label){
+    <label [for]="selectId" class="zub-select-label" [id]="selectId + '-label'">{{ label }}</label>
+  }
+  <select
+    [id]="selectId"
+    class="zub-select"
+    [disabled]="disabled"
+    [ngModel]="value"
+    (ngModelChange)="onValueChange($event)"
+    [attr.aria-label]="ariaLabel || null"
+    [attr.aria-labelledby]="!ariaLabel && label ? (selectId + '-label') : null"
+    [attr.aria-describedby]="error ? (selectId + '-error') : null"
+    [attr.aria-disabled]="disabled"
+    [attr.aria-invalid]="error ? 'true' : 'false'"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+  >
+    <option value="" disabled selected hidden *ngIf="placeholder && isEmpty">{{ placeholder }}</option>
+    <ng-container *ngFor="let opt of options">
+      <option [value]="opt.value" [disabled]="opt.disabled">{{ opt.label }}</option>
+    </ng-container>
+  </select>
+  @if(error){
+    <span class="zub-select-error" [id]="selectId + '-error'">{{ error }}</span>
+  }
+</div>
+

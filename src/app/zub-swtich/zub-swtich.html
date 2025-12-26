@@ -1,0 +1,27 @@
+<label class="switch" [attr.for]="'switch-input'">
+  <input
+    type="checkbox"
+    id="switch-input"
+    (change)="onToggle($event)"
+    role="switch"
+    [attr.aria-checked]="value"
+    [attr.aria-disabled]="_disabled ? 'true' : null"
+    [attr.aria-label]="ariaLabel"
+    tabindex="0"
+    [attr.name]="formControlName ? formControlName : 'checked'"
+    [disabled]="_disabled"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (keydown)="onKeydown($event)"
+    [checked]="value"
+  >
+  <span class="slider round" [class.checked]="value" [class.disabled]="_disabled" [class.focused]="isFocused">
+    <span class="key">
+      @if(value){
+        <ng-container>
+          <span class="icon-check"></span>
+        </ng-container>
+      }
+    </span>
+  </span>
+</label>
